@@ -1,0 +1,4 @@
+#! /usr/env/python3
+import csv2json
+
+csv2json.main()
