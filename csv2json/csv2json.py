@@ -55,7 +55,16 @@ def main():
         default=4,
     )
     args = parser.parse_args()
-    reader = csv.DictReader(args.input)
+
+    if args.input is not sys.stdin:
+        dialect = csv.Sniffer().sniff(args.input.read(1024))
+        args.input.seek(0)
+        reader = csv.DictReader(args.input, dialect=dialect)
+    else:
+        # Seeking isn't supported on stdin, so we can't do dialect
+        # detection and instead just have to assume the format.
+        reader = csv.DictReader(args.input)
+
     json.dump(
         [
             {
