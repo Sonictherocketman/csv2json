@@ -1,11 +1,13 @@
 import setuptools
 
+
 with open("README.md", "r", encoding = "utf-8") as fh:
     long_description = fh.read()
 
+
 setuptools.setup(
     name = "csv2json.py",
-    version = "0.0.1",
+    version = "1.0",
     author = "Brian Schrader",
     author_email = "brian@brianschrader.com",
     description = "A utility to convert CSVs to JSON",
@@ -20,10 +22,9 @@ setuptools.setup(
         "License :: OSI Approved :: MIT License",
         "Operating System :: OS Independent",
     ],
-    package_dir = {"": "src"},
-    packages = setuptools.find_packages(where="src"),
+    packages = setuptools.find_packages(),
     python_requires = ">=3.7",
     scripts=(
-        'scripts/csv2json',
+        'bin/csv2json',
     )
 )
